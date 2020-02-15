@@ -14,7 +14,7 @@ def _impl(rctx):
 filegroup(
  name = 'srcs',
  visibility = ["//visibility:public"],
- srcs = glob(["**/**" %s ]))
+ srcs = glob(["**/**"] %s))
            """ % exclude_str
     print(text)
     rctx.file("BUILD", text)
