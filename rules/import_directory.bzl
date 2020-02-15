@@ -1,7 +1,5 @@
 def _impl(rctx):
-    # todo: yes, this is a hack since rctx.path(Label-in-main-repo) does not work
-
-    dir_path = "../" + rctx.attr.file.workspace_name + "/" + rctx.attr.path
+    dir_path = str(rctx.path(rctx.attr.file).dirname) + "/" + rctx.attr.path
     entries = rctx.path(dir_path).readdir()
     dirs = []
     for entry in entries:
@@ -16,8 +14,8 @@ filegroup(
  visibility = ["//visibility:public"],
  srcs = glob(["**/**"] %s))
            """ % exclude_str
-    print(text)
     rctx.file("BUILD", text)
+
     rctx.file(".bazelignore", "\n".join(dirs))
 
 import_directory = repository_rule(
