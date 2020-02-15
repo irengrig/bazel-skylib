@@ -9,7 +9,7 @@ def _impl(rctx):
         dirs.append(entry.basename)
     exclude_str = ""
     if len(rctx.attr.exclude) > 0:
-        exclude_str = ", exclude = [" + ", ".join(rctx.attr.exclude) + "]"
+        exclude_str = ", exclude = [" + ", ".join(["\"" + i + "\"" for i in rctx.attr.exclude]) + "]"
     text = """
 filegroup(
  name = 'srcs',
