@@ -3,10 +3,7 @@ load("//rules:diff_test.bzl", "diff_test")
 
 filegroup(
     name = "fg",
-    srcs = [
-        "subdir/inner.txt",
-        ":select_me.txt",
-    ],
+    srcs = glob(["**/**"]),
 )
 
 select_file(
