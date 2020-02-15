@@ -9,6 +9,6 @@ load("@skylib1//rules:import_directory.bzl", "import_directory")
 
 import_directory(
     name = "imported",
-    main_workspace = "main",
+    file = "@main//:a.txt",
     path = "subdir",
 )
