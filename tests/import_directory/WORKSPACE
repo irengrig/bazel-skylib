@@ -1,0 +1,14 @@
+workspace(name = "main")
+
+local_repository(
+    name = "skylib1",
+    path = "../..",
+)
+
+load("@skylib1//rules:import_directory.bzl", "import_directory")
+
+import_directory(
+    name = "imported",
+    main_workspace = "main",
+    path = "subdir",
+)
